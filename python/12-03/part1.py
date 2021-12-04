@@ -41,7 +41,7 @@ while row < len(diagnostic_report):
 
 # replace each value with 1 if the count was greater than
 # half of the length of the diag report otherwise 0
-gamma = [0 if x < len(diagnostic_report) // 2 else 1 for x in counts]
+gamma = [0 if x <= len(diagnostic_report) // 2 else 1 for x in counts]
 
 # invert gamma digits to form epsilon array
 epsilon = [1 if x == 0 else 0 for x in gamma]
