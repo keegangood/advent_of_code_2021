@@ -63,7 +63,6 @@ def find_rating(data, criteria):
 
         index = len(prefix)
 
-        print(index, len(zeros), len(ones))
         match criteria:
             case 'high':
                 if zeros[index] > ones[index]:
@@ -81,10 +80,6 @@ def find_rating(data, criteria):
     return data
 most_common = find_rating(diag_copy, 'high')
 least_common = find_rating(diag_copy, 'low')
-
-print(most_common)
-print(least_common)
-
 
 O2 = to_decimal(most_common[0])
 CO2 = to_decimal(least_common[0])
