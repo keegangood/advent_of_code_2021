@@ -1,5 +1,13 @@
 let diagnosticReport = require('./data.json')
 
+
+const toDecimal = binary =>
+  [...binary].reduce((x, _, index, arr) => {
+    let exponent = arr.length - (index + 1)
+    return x + arr[index] * 2 ** exponent
+  }, 0)
+
+
 // create array of 0s to count occurances of 1s in diag report
 let counts = Array(diagnosticReport[0].length).fill(0)
 
@@ -25,14 +33,7 @@ gamma = counts.map(count =>
 // invert gamma digits to form epsilon array
 epsilon = gamma.map(digit => (digit ? 0 : 1))
 
-
-gamma = gamma.reduce((x, _, index, arr) => {
-  let exponent = arr.length - (index + 1)
-  return x + arr[index] * 2 ** exponent
-}, 0)
-epsilon = epsilon.reduce((x, _, index, arr) => {
-  let exponent = arr.length - (index + 1)
-  return x + arr[index] * 2 ** exponent
-}, 0)
+gamma = toDecimal(gamma)
+epsilon = toDecimal(epsilon)
 
 console.log(gamma * epsilon)
