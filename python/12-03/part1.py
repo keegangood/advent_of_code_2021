@@ -1,6 +1,6 @@
 import json
 with open('data.txt', 'r') as data_file:
-    diagnostic_report = [list(d) for d in data_file.read().split('\n')]
+    diagnostic_report = [d for d in data_file.read().split('\n')]
 
 
 def generate_json(data):
